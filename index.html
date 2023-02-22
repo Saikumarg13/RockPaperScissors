@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RockPaperScissors</title>
+</head>
+<body>
+
+<div class="resultdiv"></div>
+
+<script>
+let playerScore = 0;
+let computerScore = 0;
+
+const results = document.querySelector(".resultdiv");
+results.innerText = "The score stands at" + "\n" +"Player:" + playerScore + "\n" + "Computer:" +computerScore;
+
+function generatedNumber(max){
+  let randomNumber= Math.floor(Math.random() * max) + 1;
+  return randomNumber;
+  
+}
+
+
+
+function getComputerChoice(){
+  let Choice = generatedNumber(3);
+  console.log(Choice);
+  switch(Choice){
+    case 1: 
+      return (Choice= 'rock');
+      break;
+    
+    case 2:
+        return (Choice= 'paper');
+        break;
+      
+    case 3:
+          return (Choice= 'scissors');
+          break;
+  }
+}
+
+
+function playRound(playerSelection,computerSelection)
+{
+  if(playerSelection===computerSelection)
+  {
+    return ('It\'s a draw');
+  }
+  else if(playerSelection == 'rock' && computerSelection == 'scissors'||
+  playerSelection == 'paper' && computerSelection == 'rock'||
+  playerSelection == 'scissors' && computerSelection=='paper')
+  {
+    playerScore++;
+    console.log("Player wins");
+    return (`You won ! ${playerSelection} beats ${computerSelection}`);
+    results.innerText="The current score stand at" + "\n" +"player:" +playerScore + "\n" + "computer:" +computerScore; 
+  }
+  else{
+    computerScore++;
+    console.log("Computer wins");
+    return (`You lost ! ${computerSelection} beats ${playerSelection}`);
+    results.innerText="The current score stand at" + "\n" +"player:" +playerScore + "\n" + "computer:" +computerScore; 
+  }
+
+}
+
+//  let Selection= prompt("");
+const playerSelection = 'rock';
+console.log(playerSelection);
+const computerSelection = getComputerChoice();
+console.log(playRound(playerSelection,computerSelection));
+
+
+
+
+
+  let won = 0;
+  function game()
+  {
+  for(i=0;i<3;i++){
+    playRound(playerSelection,computerSelection);
+    won++;
+  }
+}
+
+  game();
+  
+
+
+// console.log(game());
+</script>  
+
+
+
+
+</body>
+        
+       
+    </script> 
+
+</body>
+</html>
